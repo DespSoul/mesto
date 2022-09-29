@@ -1,4 +1,4 @@
-.button__edit{
+.button_edit{
   width: 24px;
   height: 24px;
   margin: 0;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 767px){
-  .button__edit{
+  .button_edit{
     width: 18px;
     height: 18px;
   }

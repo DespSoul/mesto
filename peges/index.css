@@ -17,8 +17,8 @@
 @import url(../bloks/profile/__subtitile/profile__subtitle.css);
 
 @import url(../bloks/batton/button.css);
-@import url(../bloks/batton/__edit/button__edit.css);
-@import url(../bloks/batton/__add/batton__add.css);
+@import url(../bloks/batton/_edit/button_edit.css);
+@import url(../bloks/batton/_add/batton_add.css);
 
 @import url(../bloks/popup/popup.css);
 @import url(../bloks/popup/_opened/popup_opened.css);
