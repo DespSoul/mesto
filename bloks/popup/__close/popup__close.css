@@ -6,7 +6,7 @@
   position: absolute;
   top: -40px;
   right: -40px;
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0);
   transition: all .4s;
   background-repeat: no-repeat;
   background-size: contain;
