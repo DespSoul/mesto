@@ -6,3 +6,10 @@
   line-height: 17px;
   color: #545454;
 }
+
+@media screen and (max-width: 767px) {
+  .footer__title {
+    max-width: 282px;
+    margin-left: 19px;
+  }
+}

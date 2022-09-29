@@ -8,6 +8,7 @@
   color: #FFFFFF;
   border-radius: 2px;
   transition: all .6s;
+  outline: none;
 }
 
 .popup__button:hover {
