@@ -1,8 +1,13 @@
-.element__content{
+.element__content {
   margin: 0;
   padding: 0;
   background-color: #FFFFFF;
   color: #000000;
   max-width: 282px;
   border-radius: 10px;
+  transition: all .4s;
+}
+
+.element__content:hover {
+  opacity: .6;
 }
