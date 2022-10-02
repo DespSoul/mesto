@@ -7,9 +7,14 @@
   color: #545454;
 }
 
+@media screen and (max-width: 1023px) {
+  .footer__title {
+    margin-left: 19px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .footer__title {
     max-width: 282px;
-    margin-left: 19px;
   }
 }
