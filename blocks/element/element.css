@@ -1,4 +1,4 @@
-.element{
+.element {
   margin: 0;
   padding: 0;
   max-width: 880px;
@@ -8,16 +8,15 @@
   list-style-type: none;
 }
 
-@media screen and (max-width: 1023px){ 
-  .element{
+@media screen and (max-width: 1023px) {
+  .element {
     max-width: 600px;
   }
 }
 
-@media screen and (max-width: 767px){
-  .element{
+@media screen and (max-width: 767px) {
+  .element {
     flex-direction: column;
     gap: 20px 0;
   }
 }
-
