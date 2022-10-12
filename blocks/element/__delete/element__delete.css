@@ -15,4 +15,6 @@
 
 .element__delete:hover {
   opacity: .6;
+  cursor: pointer;
+
 }

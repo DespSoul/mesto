@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
+  <script src="./script/array-cards.js" defer></script>
+  <script src="./script/index.js" defer></script>
   <title>mesto</title>
 </head>
 
@@ -39,9 +41,9 @@
     <div class='popup__content'>
       <button class="popup__close" id="close-place"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form action="./script/index.js" class="popup__inputs" id="save-place">
-        <input type="text" class="popup__name" placeholder="Название" name="name-img" id="name-image">
-        <input type="url" class="popup__subtitle" placeholder="Ссылка на картинку" name="url" id='url-image'>
+      <form class="popup__inputs" id="new-place-form">
+        <input type="text" class="popup__name" placeholder="Название" name="name-img" id="name-image" required>
+        <input type="url" class="popup__subtitle" placeholder="Ссылка на картинку" name="url" id='url-image' required>
         <button class="popup__button" type="submit">Создать</button>
       </form>
     </div>
@@ -50,9 +52,9 @@
     <div class='popup__content'>
       <button class="popup__close" id="profile-close"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form action="./script/index.js" class="popup__inputs" id="profile-save">
-        <input type="text" class="popup__name" value="Жак-Ив Кусто" name="name" id="popup-name">
-        <input type="text" class="popup__subtitle" value="Исследователь океана" name="subtitle" id="popup-subtitle">
+      <form class="popup__inputs" id="new-profile-text-form">
+        <input type="text" class="popup__name" value="Жак-Ив Кусто" name="name" id="popup-name" placeholder="Имя">
+        <input type="text" class="popup__subtitle" value="Исследователь океана" name="subtitle" id="popup-subtitle" placeholder="О Себе">
         <button class="popup__button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -75,9 +77,6 @@
         </div>
       </li>
   </template>
-
-  <script src="./script/array.js"></script>
-  <script src="./script/index.js"></script>
 </body>
 
 </html>
