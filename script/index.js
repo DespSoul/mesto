@@ -7,7 +7,7 @@ const jobInput = document.querySelector('#popup-subtitle');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
-  const openPopup = (element) => {
+const openPopup = (element) => {
   element.classList.add('popup_opened');
 };
 
@@ -72,8 +72,8 @@ const cardTemplate = document.querySelector('#element-template').content;
 
 const renderCardArray = () => {
   initialCards.forEach((item) => {
-    const cardsFromArray = createElement(item.link, item.name);
-    cards.prepend(cardsFromArray);
+    const newCard = createElement(item.link, item.name);
+    cards.prepend(newCard);
   });
 };
 
@@ -86,7 +86,7 @@ const createElement = (link, name) => {
   battonDeleteElement.addEventListener('click', deleteElement);
 
   const buttonLike = card.querySelector('.element__like');
-  buttonLike.addEventListener('click', () =>{
+  buttonLike.addEventListener('click', () => {
     buttonLike.classList.toggle('element__like_active');
   });
 
@@ -95,7 +95,7 @@ const createElement = (link, name) => {
     popupContentImage.alt = cardText.textContent;
     popupContentText.textContent = cardText.textContent;
 
-    openPopupImage()
+    openPopup(popupImage);
   });
 
   cardImage.src = link;
@@ -128,10 +128,6 @@ const popupImage = document.querySelector('#popup-image');
 const buttonClosePopupImage = document.querySelector('#close-popup-image');
 const popupContentImage = document.querySelector('.popup__image');
 const popupContentText = document.querySelector('.popup__text');
-
-function openPopupImage() {
-  openPopup(popupImage);
-};
 
 function closePopupImage() {
   closePopup(popupImage);
