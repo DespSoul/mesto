@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
+  <script src="./script/validation.js" defer></script>
   <script src="./script/array-cards.js" defer></script>
   <script src="./script/index.js" defer></script>
   <title>mesto</title>
@@ -41,10 +42,16 @@
     <div class='popup__content'>
       <button class="popup__close" id="close-place"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__inputs" id="new-place-form">
-        <input type="text" class="popup__name" placeholder="Название" name="name-img" id="name-image" required>
-        <input type="url" class="popup__subtitle" placeholder="Ссылка на картинку" name="url" id='url-image' required>
-        <button class="popup__button" type="submit">Создать</button>
+      <form class="popup__form" id="new-place-form" novalidate>
+        <div class="popup__field">
+          <input type="text" class="popup__input" placeholder="Название" name="name-img" id="name-image" minlength="2" maxlength="30" required>
+          <span class="popup__span name-image-error" id="popup-name-img-error"></span>
+        </div>
+        <div class="popup__field">
+          <input type="url" class="popup__input" placeholder="Ссылка на картинку" name="url" id='url-image' required>
+          <span class="popup__span url-image-error"></span>
+        </div>
+        <button class="popup__button" id="popup-button-place" type="submit">Создать</button>
       </form>
     </div>
   </div>
@@ -52,10 +59,18 @@
     <div class='popup__content'>
       <button class="popup__close" id="profile-close"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__inputs" id="new-profile-text-form">
-        <input type="text" class="popup__name" value="Жак-Ив Кусто" name="name" id="popup-name" placeholder="Имя">
-        <input type="text" class="popup__subtitle" value="Исследователь океана" name="subtitle" id="popup-subtitle" placeholder="О Себе">
-        <button class="popup__button" type="submit">Сохранить</button>
+      <form class="popup__form" id="new-profile-text-form" novalidate>
+        <div class="popup__field">
+          <input type="text" class="popup__input" value="Жак-Ив Кусто" name="name" id="popup-name" placeholder="Имя"
+            minlength="2" maxlength="40" required>
+          <span class="popup__span popup-name-error" id="popup-name-error"></span>
+        </div>
+        <div class="popup__field">
+          <input type="text" class="popup__input" value="Исследователь океана" name="subtitle" id="popup-subtitle"
+            minlength="2" maxlength="200" placeholder="О Себе" required>
+          <span class="popup__span popup-subtitle-error" id="popup-subtitle-error"></span>
+        </div>
+        <button class="popup__button" id="popup-button-profile" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -68,14 +83,14 @@
   </div>
 
   <template id="element-template">
-      <li class="element__content">
-        <button class="element__delete"></button>
-        <img class="element__image">
-        <div class="element__text">
-          <h2 class="element__title"></h2>
-          <button class="element__like"></button>
-        </div>
-      </li>
+    <li class="element__content">
+      <button class="element__delete"></button>
+      <img class="element__image">
+      <div class="element__text">
+        <h2 class="element__title"></h2>
+        <button class="element__like"></button>
+      </div>
+    </li>
   </template>
 </body>
 
