@@ -1,5 +1,10 @@
 .popup__button_disabled{
   background-color: #FFFFFF;
-  color: rgba(0, 0, 0, .3);
-  border-color: rgba(0, 0, 0, .3);
+  color: rgba(0, 0, 0, .2);
+  border-color: rgba(0, 0, 0, .2);
+}
+
+.popup__button_disabled:hover{
+  opacity: 1;
+  cursor: default;
 }

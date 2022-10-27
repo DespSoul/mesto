@@ -18,6 +18,21 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const popupElementArray = document.querySelectorAll('.popup');
 
+const popupPlace = document.querySelector('#popup-place');
+const buttonOpenPopupPlace = document.querySelector('.button_add');
+const buttonClosePopupPlace = document.querySelector('#close-place');
+const formSaveNewPlace = document.querySelector('#new-place-form');
+const popupNameImagePlace = document.querySelector("#name-image");
+const popupUrlImagePlace = document.querySelector('#url-image');
+const buttonPopupPlace = document.querySelector('#popup-button-place')
+const cards = document.querySelector('.element');
+const cardTemplate = document.querySelector('#element-template').content;
+
+const popupImage = document.querySelector('#popup-image');
+const buttonClosePopupImage = document.querySelector('#close-popup-image');
+const popupContentImage = document.querySelector('.popup__image');
+const popupContentText = document.querySelector('.popup__text');
+
 const openPopup = (element) => {
   element.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupKeydownEsc);
@@ -76,13 +91,6 @@ profileFormSave.addEventListener('submit', saveFormProfile);
 
 
 
-const popupPlace = document.querySelector('#popup-place');
-const buttonOpenPopupPlace = document.querySelector('.button_add');
-const buttonClosePopupPlace = document.querySelector('#close-place');
-const formSaveNewPlace = document.querySelector('#new-place-form');
-const popupNameImagePlace = document.querySelector("#name-image");
-const popupUrlImagePlace = document.querySelector('#url-image');
-const buttonPopupPlace = document.querySelector('#popup-button-place')
 
 
 function openPopupPlace() {
@@ -105,8 +113,7 @@ buttonClosePopupPlace.addEventListener('click', closePopupPlace);
 
 
 
-const cards = document.querySelector('.element');
-const cardTemplate = document.querySelector('#element-template').content;
+
 
 const renderCardArray = () => {
   initialCards.forEach((item) => {
@@ -162,10 +169,6 @@ function deleteElement(e) {
 
 
 
-const popupImage = document.querySelector('#popup-image');
-const buttonClosePopupImage = document.querySelector('#close-popup-image');
-const popupContentImage = document.querySelector('.popup__image');
-const popupContentText = document.querySelector('.popup__text');
 
 function closePopupImage() {
   closePopup(popupImage);
