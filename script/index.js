@@ -1,8 +1,8 @@
 import Card from "./card.js";
-import {initialCards} from './data.js';
+import { initialCards } from './data.js';
 import FormValidator from './FormValidator.js'
 
-const  validationConfig = {
+const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
@@ -37,7 +37,7 @@ const buttonClosePopupImage = document.querySelector('#close-popup-image');
 const popupContentImage = document.querySelector('.popup__image');
 const popupContentText = document.querySelector('.popup__text');
 
-const FormValidatorPlace =  new FormValidator(validationConfig, formSaveNewPlace);
+const FormValidatorPlace = new FormValidator(validationConfig, formSaveNewPlace);
 const FormValidatorProfile = new FormValidator(validationConfig, profileFormSave);
 
 const openPopup = (element) => {
@@ -51,7 +51,7 @@ const closePopup = (element) => {
   document.removeEventListener('keydown', closePopupKeydownEsc);
 };
 
-function closePopupKeydownEsc (e) {
+function closePopupKeydownEsc(e) {
   if (e.key === 'Escape') {
     const popupElement = document.querySelector('.popup_opened');
     if (popupElement) {
@@ -60,9 +60,9 @@ function closePopupKeydownEsc (e) {
   };
 };
 
-popupElementArray.forEach((element) =>{
-  element.addEventListener('click', (e) =>{
-    if(e.target === e.currentTarget){
+popupElementArray.forEach((element) => {
+  element.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
       closePopup(element)
     };
   });
@@ -115,7 +115,7 @@ function closePopupPlace() {
 
 buttonClosePopupPlace.addEventListener('click', closePopupPlace);
 
-function openPopupImage(data){
+function openPopupImage(data) {
   popupContentImage.src = data.link;
   popupContentImage.alt = data.name;
   popupContentText.textContent = data.name;
@@ -131,7 +131,7 @@ function closePopupImage() {
 buttonClosePopupImage.addEventListener('click', closePopupImage);
 
 function createCard(data) {
-  const newCard = new Card (data, '.element-template', openPopupImage);
+  const newCard = new Card(data, '.element-template', openPopupImage);
   return newCard.createElement();
 }
 
@@ -139,10 +139,10 @@ const addNewCard = (cardElement) => {
   cards.prepend(cardElement);
 };
 
-function submitSaveNewPlace(e){
+function submitSaveNewPlace(e) {
   e.preventDefault()
 
-  const card = createCard({name: popupNameImagePlace.value, link: popupUrlImagePlace.value});
+  const card = createCard({ name: popupNameImagePlace.value, link: popupUrlImagePlace.value });
   addNewCard(card);
 
   closePopupPlace()

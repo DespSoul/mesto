@@ -33,7 +33,7 @@ export default class Card {
   _setEventListeners() {
     this._elementContent.querySelector('.element__delete')
       .addEventListener('click', () => this._elementContent
-      .closest('.element__content').remove());
+        .closest('.element__content').remove());
 
     this._elementContent.querySelector('.element__like')
       .addEventListener('click', () => this._elementContent
