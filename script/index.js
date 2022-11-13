@@ -15,7 +15,7 @@ const validationConfig = {
 const popupProfile = document.querySelector('#popup-profile');
 const buttonEditPopupProfile = document.querySelector('.button_edit');
 const buttonClosePopupProfile = document.querySelector('#profile-close');
-const profileFormSave = document.querySelector('#new-profile-text-form');
+const profileForm = document.querySelector('#new-profile-text-form');
 const nameInput = document.querySelector('#popup-name');
 const jobInput = document.querySelector('#popup-subtitle');
 const profileTitle = document.querySelector('.profile__title');
@@ -34,7 +34,7 @@ const popupContentImage = document.querySelector('.popup__image');
 const popupContentText = document.querySelector('.popup__text');
 
 const formValidatorPlace = new FormValidator(validationConfig, formSaveNewPlace);
-const formValidatorProfile = new FormValidator(validationConfig, profileFormSave);
+const formValidatorProfile = new FormValidator(validationConfig, profileForm);
 
 const openPopup = (element) => {
   element.classList.add('popup_opened');
@@ -88,7 +88,7 @@ function saveFormProfile(evt) {
   closePopupProfile();
 };
 
-profileFormSave.addEventListener('submit', saveFormProfile);
+profileForm.addEventListener('submit', saveFormProfile);
 
 
 
