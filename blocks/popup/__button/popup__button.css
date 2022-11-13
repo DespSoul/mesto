@@ -1,5 +1,5 @@
 .popup__button {
-  margin: 34px 0 19px;
+  margin: 19px 0 37px;
   padding: 0;
   text-align: center;
   width: 358px;
@@ -11,7 +11,7 @@
   outline: none;
 }
 
-.popup__button:hover {
+.popup__button:not(:disabled):hover {
   opacity: .8;
   cursor: pointer;
 }
