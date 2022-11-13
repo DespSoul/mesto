@@ -21,7 +21,7 @@ export default class FormValidator {
     spanError.textContent = '';
   };
 
-  _isValid = (popupInput) => {
+  _toggleInputErrorState = (popupInput) => {
     if (!popupInput.validity.valid) {
       this._showInputError(popupInput, popupInput.validationMessage);
     } else {
@@ -57,7 +57,7 @@ export default class FormValidator {
     this._toggleButtonPopup()
     this._inputs.forEach((input) => {
       input.addEventListener('input', () => {
-        this._isValid(input);
+        this._toggleInputErrorState(input);
         this._toggleButtonPopup();
       })
     })
