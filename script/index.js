@@ -1,6 +1,9 @@
 import Card from "./card.js";
 import { initialCards } from './data.js';
-import FormValidator from './FormValidator.js'
+import FormValidator from './FormValidator.js';
+import Popup from './Popup.js'
+import Section from './Section.js'
+
 
 const validationConfig = {
   formSelector: '.popup__form',
@@ -35,79 +38,88 @@ const popupContentText = document.querySelector('.popup__text');
 
 const formValidatorPlace = new FormValidator(validationConfig, formSaveNewPlace);
 const formValidatorProfile = new FormValidator(validationConfig, profileForm);
-
-const openPopup = (element) => {
-  element.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupKeydownEsc);
-};
-
-const closePopup = (element) => {
-  element.classList.remove('popup_opened');
-
-  document.removeEventListener('keydown', closePopupKeydownEsc);
-};
-
-function closePopupKeydownEsc(e) {
-  if (e.key === 'Escape') {
-    const popupElement = document.querySelector('.popup_opened');
-      closePopup(popupElement)
-  };
-};
-
-popupElementArray.forEach((element) => {
-  element.addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-      closePopup(element)
-    };
-  });
-});
-
-function openPopupProfile() {
-  openPopup(popupProfile);
-  formValidatorProfile.resetValidation();
-
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
-};
+const section = new Section ({items: initialCards, renderer: createCard}, '.element');
+section.render()
 
 
-buttonEditPopupProfile.addEventListener('click', openPopupProfile);
+// function openPopup(element){
+//   const popup = new Popup (element);
+//   popup.open()
+// }
+// function closePopup(element){
+//   const popup = new Popup (element);
+//   popup.close()
+// }
 
-function closePopupProfile() {
-  closePopup(popupProfile);
-};
+// const openPopup = (element) => {
+//   element.classList.add('popup_opened');
+//   document.addEventListener('keydown', closePopupKeydownEsc);
+// };
 
-buttonClosePopupProfile.addEventListener('click', closePopupProfile);
+// const closePopup = (element) => {
+//   element.classList.remove('popup_opened');
 
-function saveFormProfile(evt) {
-  evt.preventDefault();
+//   document.removeEventListener('keydown', closePopupKeydownEsc);
+// };
 
-  profileTitle.textContent = nameInput.value;
-  profileSubtitle.textContent = jobInput.value;
+// function closePopupKeydownEsc(e) {
+//   if (e.key === 'Escape') {
+//     const popupElement = document.querySelector('.popup_opened');
+//       closePopup(popupElement)
+//   };
+// };
 
-  closePopupProfile();
-};
+// popupElementArray.forEach((element) => {
+//   element.addEventListener('click', (e) => {
+//     if (e.target === e.currentTarget) {
+//       closePopup(element)
+//     };
+//   });
+// });
 
-profileForm.addEventListener('submit', saveFormProfile);
+
+// function openPopupProfile() {
+//   open()
+//   nameInput.value = profileTitle.textContent;
+//   jobInput.value = profileSubtitle.textContent;
+// };
+
+
+// buttonEditPopupProfile.addEventListener('click', () => {
+//   openPopup('#popup-profile')
+// });
+
+// buttonClosePopupProfile.addEventListener('click', () => {closePopup('#popup-profile')});
+
+// function saveFormProfile(evt) {
+//   evt.preventDefault();
+
+//   profileTitle.textContent = nameInput.value;
+//   profileSubtitle.textContent = jobInput.value;
+
+//   closePopupProfile();
+// };
+
+// profileForm.addEventListener('submit', saveFormProfile);
 
 
 
 
 
-function openPopupPlace() {
-  openPopup(popupPlace);
-  formValidatorPlace.resetValidation();
-};
+// function openPopupPlace() {
+//   openPopup(popupPlace);
+//   formValidatorPlace.resetValidation();
+// };
 
-buttonOpenPopupPlace.addEventListener('click', openPopupPlace);
+buttonOpenPopupPlace.addEventListener('click', () =>{openPopup('#popup-place')});
 
-function closePopupPlace() {
-  closePopup(popupPlace);
+// function closePopupPlace() {
+//   closePopup(popupPlace);
 
-  formSaveNewPlace.reset();
-};
+//   formSaveNewPlace.reset();
+// };
 
-buttonClosePopupPlace.addEventListener('click', closePopupPlace);
+buttonClosePopupPlace.addEventListener('click', () =>{closePopup('#popup-place')});
 
 function openPopupImage({link, name}) {
   popupContentImage.src = link;
@@ -142,13 +154,9 @@ function submitSaveNewPlace(e) {
   closePopupPlace()
 }
 
-initialCards.forEach((item) => {
-  const card = createCard(item);
-  addNewCard(card);
-});
-
 formSaveNewPlace.addEventListener('submit', submitSaveNewPlace);
 
 formValidatorProfile.enableValidation();
 
 formValidatorPlace.enableValidation();
+

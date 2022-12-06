@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "* \"Место\" - проект в котором я применял полученные знания:\r - открытие и закрытие попапов\r - добавление новых карточек\r - возможность удалить непонравившуюся карточку, а так же оценить понравившуюся",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DespSoul/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DespSoul/mesto/issues"
+  },
+  "homepage": "https://github.com/DespSoul/mesto#readme"
+}
