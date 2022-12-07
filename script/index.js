@@ -3,6 +3,8 @@ import { initialCards } from './data.js';
 import FormValidator from './FormValidator.js';
 import Popup from './Popup.js'
 import Section from './Section.js'
+import UserInfo from './UserInfo.js';
+import PopupWithImage from './PopupWithImage.js';;
 
 
 const validationConfig = {
@@ -40,6 +42,8 @@ const formValidatorPlace = new FormValidator(validationConfig, formSaveNewPlace)
 const formValidatorProfile = new FormValidator(validationConfig, profileForm);
 const section = new Section ({items: initialCards, renderer: createCard}, '.element');
 section.render()
+const popupImageOpen = new PopupWithImage('#popup-image')
+
 
 
 // function openPopup(element){
@@ -121,13 +125,13 @@ buttonOpenPopupPlace.addEventListener('click', () =>{openPopup('#popup-place')})
 
 buttonClosePopupPlace.addEventListener('click', () =>{closePopup('#popup-place')});
 
-function openPopupImage({link, name}) {
-  popupContentImage.src = link;
-  popupContentImage.alt = name;
-  popupContentText.textContent = name;
+// function openPopupImage({link, name}) {
+//   popupContentImage.src = link;
+//   popupContentImage.alt = name;
+//   popupContentText.textContent = name;
 
-  openPopup(popupImage);
-}
+//   openPopup(popupImage);
+// }
 
 
 function closePopupImage() {
@@ -137,7 +141,9 @@ function closePopupImage() {
 buttonClosePopupImage.addEventListener('click', closePopupImage);
 
 function createCard(data) {
-  const newCard = new Card(data, '.element-template', openPopupImage);
+  const newCard = new Card(data, '.element-template', (link, name) => 
+  {popupImageOpen.open(link, name)});
+
   return newCard.createElement();
 }
 

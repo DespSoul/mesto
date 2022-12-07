@@ -41,6 +41,6 @@ export default class Card {
         .classList.toggle('element__like_active'));
 
     this._cardImage.addEventListener('click', () => this._openPopupImage
-      ({ name: this._name, link: this._link }));
+      (this._link, this._name ));
   };
 };
