@@ -3,12 +3,11 @@ export default class UserInfo {
     this._name = document.querySelector(nameSelector);
     this._about = document.querySelector(aboutSelector);
   }
-  getUserInfo(data) {
-    this._name = data.name;
-    this._about = data.about;
+  getUserInfo() {
+    return {name: this._name.textContent, about: this._about.textContent}
   }
-  setUserInfo(namePopup, aboutPopup) {
-    this._name.textContent = namePopup;
-    this._about.textContent = aboutPopup;
+  setUserInfo(values) {
+    this._name.textContent = values.name;
+    this._about.textContent = values.about;
   }
 }
