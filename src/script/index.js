@@ -6,6 +6,7 @@ import UserInfo from './UserInfo.js';
 import PopupWithImage from './PopupWithImage.js';;
 import PopupWithForm from './PopupWithForm.js';
 import { buttonEditPopupProfile, profileForm, cards, buttonOpenPopupPlace, formSaveNewPlace } from "./const.js"
+import '../pages/index.css'
 
 const validationConfig = {
   formSelector: '.popup__form',
@@ -55,6 +56,7 @@ function createCard(data) {
 const addNewCard = (cardElement) => {
   cards.prepend(cardElement);
 };
+
 
 formValidatorProfile.enableValidation();
 formValidatorPlace.enableValidation();
