@@ -11,6 +11,8 @@ import {
   cards,
   buttonOpenPopupPlace,
   formSaveNewPlace,
+  profileAvatarImage,
+  popupFormSaveAvatar,
 } from "./const.js";
 import "../pages/index.css";
 
@@ -28,6 +30,7 @@ const formValidatorPlace = new FormValidator(
   formSaveNewPlace
 );
 const formValidatorProfile = new FormValidator(validationConfig, profileForm);
+const formValidatorAvatar = new FormValidator(validationConfig, popupFormSaveAvatar);
 
 const userInfo = new UserInfo(".profile__title", ".profile__subtitle");
 const section = new Section(
@@ -46,6 +49,7 @@ const popupFormPlace = new PopupWithForm("#popup-place", (values) => {
 });
 popupFormPlace.setEventListeners();
 
+
 buttonEditPopupProfile.addEventListener("click", () => {
   popupFormProfile.open();
   popupFormProfile.setInputsValues(userInfo.getUserInfo());
@@ -57,6 +61,8 @@ buttonOpenPopupPlace.addEventListener("click", () => {
   formValidatorPlace.resetValidation();
 });
 
+
+
 function createCard(data) {
   const newCard = new Card(data, ".element-template", (link, name) => {
     popupImageOpen.open(link, name);
@@ -65,5 +71,11 @@ function createCard(data) {
   return newCard.createElement();
 }
 
+const deletePopup = document.querySelector(".popup-delete-element")
+const popupAvatar = document.querySelector(".popup-save-avatar")
+
+popupAvatar.classList.add("popup_opened")
+
 formValidatorProfile.enableValidation();
 formValidatorPlace.enableValidation();
+formValidatorAvatar.enableValidation();
