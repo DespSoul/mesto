@@ -28,6 +28,8 @@ const validationConfig = {
   errorClass: "popup__span_active",
 };
 
+let userId;
+
 const formValidatorPlace = new FormValidator(
   validationConfig,
   formSaveNewPlace
@@ -167,6 +169,14 @@ function createCard(data) {
 
   return newCard.createElement();
 }
+
+Promise.all([api.getUsers(), api.getInitialCards()]).then(
+  ([usersData, cards]) => {
+    userId = usersData._id;
+    userInfo.setUserInfo(usersData);
+    section.addItem(createCard(cards));
+  }
+);
 
 formValidatorProfile.enableValidation();
 formValidatorPlace.enableValidation();
