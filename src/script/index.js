@@ -170,13 +170,15 @@ function createCard(data) {
   return newCard.createElement();
 }
 
-Promise.all([api.getUsers(), api.getInitialCards()]).then(
-  ([usersData, cards]) => {
+Promise.all([api.getUsers(), api.getInitialCards()])
+  .then(([usersData, cards]) => {
     userId = usersData._id;
     userInfo.setUserInfo(usersData);
     section.addItem(createCard(cards));
-  }
-);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 formValidatorProfile.enableValidation();
 formValidatorPlace.enableValidation();
