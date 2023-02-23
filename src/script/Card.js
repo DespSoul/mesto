@@ -1,5 +1,3 @@
-import { data } from "jquery";
-
 export default class Card {
   constructor(
     data,
@@ -14,9 +12,9 @@ export default class Card {
     this._toggleLike = toggleLike;
     this._popupDeleteCard = popupDeleteCard;
     this._data = data;
+    this._ownerId = data.owner._id;
     this._name = data.name;
     this._link = data.link;
-    this._ownerId = data.owner._id;
     this._userId = userId;
   }
 
@@ -38,10 +36,15 @@ export default class Card {
     this._counterLike = this._elementContent.querySelector(
       ".element__like-quantity"
     );
-    this._isLike = !!this._data.likes.find((obj) => obj._id === this.userId);
+
+    this._isLiked = !!this._data.likes.find((obj) => obj._id === this.userId);
 
     if (this._userId !== this._ownerId) {
       this._buttonRemove.remove();
+    }
+
+    if (this._isLiked) {
+      this._buttonLike.classList.add("element__like_active");
     }
 
     this._setEventListeners();
@@ -49,24 +52,25 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardText.textContent = this._name;
+    this._counterLike.textContent = this._data.likes.length;
 
     return this._elementContent;
   }
 
   _clickLikeButtonHandler() {
-    this._toggleLike(this._isLike, this._data._id);
+    this._toggleLike(this._isLiked, this._data._id);
   }
 
   likeButtonActive(count) {
     this._buttonLike.classList.add("element__like_active");
     this._counterLike.textContent = count;
-    this._isLike = true;
+    this._isLiked = true;
   }
 
   likeButtonInactive(count) {
     this._buttonLike.classList.remove("element__like_active");
     this._counterLike.textContent = count;
-    this._isLike = false;
+    this._isLiked = false;
   }
 
   _clickImageHandler() {

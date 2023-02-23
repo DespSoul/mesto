@@ -35,10 +35,10 @@ const formValidatorPlace = new FormValidator(
   formSaveNewPlace
 );
 const formValidatorProfile = new FormValidator(validationConfig, profileForm);
-const formValidatorAvatar = new FormValidator(
-  validationConfig,
-  popupFormSaveAvatar
-);
+// const formValidatorAvatar = new FormValidator(
+//   validationConfig,
+//   popupFormSaveAvatar
+// );
 
 const userInfo = new UserInfo(
   ".profile__title",
@@ -46,37 +46,8 @@ const userInfo = new UserInfo(
   ".profile__avatar"
 );
 
-const section = new Section(
-  { items: initialCards, renderer: createCard },
-  ".element"
-);
-
-const popupСonfirmDeleteCard = new PopupDeleteCard(
-  ".popup-delete-card",
-  async (id, card) => {
-    api
-      .deleteCard(id)
-      .then(() => {
-        card.remove();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-);
-
-const popupAvatar = new PopupWithForm(".popup-save-avatar", () => {
-  async (link) => {
-    return api
-      .editingAvatar(link)
-      .then((link) => {
-        userInfo.setUserInfo(link);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-});
+const section = new Section({renderer: createCard},
+  ".element");
 
 const api = new Api({
   utl: "https://mesto.nomoreparties.co/v1/cohort-60",
@@ -86,14 +57,26 @@ const api = new Api({
   },
 });
 
-section.renderInitialCard();
+const popupConfirmDeleteCard = new PopupDeleteCard(
+  ".popup-delete-card",
+  async (id, card) => {
+    api
+      .deleteCard(id)
+      .then(() => {
+        card.remove();
+        card = null
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+);
 
-const popupImageOpen = new PopupWithImage("#popup-image");
-popupImageOpen.setEventListeners();
+popupConfirmDeleteCard.setEventListeners();
 
-const popupFormProfile = new PopupWithForm("#popup-profile", async (data) => {
-  return api(data)
-    .editingProfile(data)
+const popupAvatar = new PopupWithForm(".popup-save-avatar", async (data) => {
+  return api
+    .editingAvatar({ avatar: data.link })
     .then((data) => {
       userInfo.setUserInfo(data);
     })
@@ -102,25 +85,42 @@ const popupFormProfile = new PopupWithForm("#popup-profile", async (data) => {
     });
 });
 
+popupAvatar.setEventListeners();
+
+const popupFormProfile = new PopupWithForm("#popup-profile", async (data) => {
+  return api
+  .editingProfile(data)
+  .then((data) => {
+    userInfo.setUserInfo(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+});
+
 popupFormProfile.setEventListeners();
 
 const popupFormPlace = new PopupWithForm("#popup-place", async (data) => {
-  return api(data)
-    .addNewCard(data)
-    .then((card) => {
-      section.addItem(createCard(card));
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return api
+  .addNewCard(data)
+  .then((data) => {
+    console.log(data.owner._id)
+    section.addItem(createCard(data));
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 });
 
 popupFormPlace.setEventListeners();
 
 avatarProfile.addEventListener("click", () => {
   popupAvatar.open();
-  formValidatorAvatar.resetValidation();
+  // formValidatorAvatar.resetValidation();
 });
+
+const popupImageOpen = new PopupWithImage("#popup-image");
+popupImageOpen.setEventListeners();
 
 buttonEditPopupProfile.addEventListener("click", () => {
   popupFormProfile.open();
@@ -141,7 +141,7 @@ function createCard(data) {
       popupImageOpen.open(link, name);
     },
     (data, card) => {
-      popupСonfirmDeleteCard.openPopupDelete(data._id, card);
+      popupConfirmDeleteCard.openPopupDelete(data._id, card);
     },
     userId,
     (isLiked, id) => {
@@ -149,7 +149,7 @@ function createCard(data) {
         api
           .deleteLike(id)
           .then((data) => {
-            newCard.likeButtonActive(data.likes.length);
+            newCard.likeButtonInactive(data.likes.length);
           })
           .catch((err) => {
             console.log(err);
@@ -158,7 +158,8 @@ function createCard(data) {
         api
           .addLike(id)
           .then((data) => {
-            newCard.likeButtonInactive(data.likes.length);
+            console.log(data)
+            newCard.likeButtonActive(data.likes.length);
           })
           .catch((err) => {
             console.log(err);
@@ -172,9 +173,10 @@ function createCard(data) {
 
 Promise.all([api.getUsers(), api.getInitialCards()])
   .then(([usersData, cards]) => {
+    console.log(cards)
     userId = usersData._id;
     userInfo.setUserInfo(usersData);
-    section.addItem(createCard(cards));
+    section.renderInitialCard(cards);
   })
   .catch((err) => {
     console.log(err);
@@ -182,4 +184,4 @@ Promise.all([api.getUsers(), api.getInitialCards()])
 
 formValidatorProfile.enableValidation();
 formValidatorPlace.enableValidation();
-formValidatorAvatar.enableValidation();
+// formValidatorAvatar.enableValidation();

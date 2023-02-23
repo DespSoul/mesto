@@ -24,35 +24,35 @@ export default class Api {
     return answer;
   }
 
-  getUsers(){
-    return this._fetch('/users/me', "GET")
+  getUsers() {
+    return this._fetch("/users/me", "GET");
   }
 
-  getInitialCards(){
-    return this._fetch('/cards', "GET")
+  getInitialCards() {
+    return this._fetch("/cards", "GET");
   }
 
-  editingProfile({ name , about}){
-    return this._fetch('/users/me', "PATCH", { name , about})
+  editingProfile({ name, about }) {
+    return this._fetch("/users/me", "PATCH", { name, about });
   }
 
-  editingAvatar(avatar){
-    return this._fetch('/users/me/avatar', "PATCH", avatar)
+  editingAvatar(avatar) {
+    return this._fetch("/users/me/avatar", "PATCH", avatar);
   }
 
-  addNewCard({ name, link}){
-    return this._fetch('/cards', "POST", { name, link})
+  addNewCard({ name, link }) {
+    return this._fetch("/cards", "POST", { name, link });
   }
 
-  deleteCard(id){
-    return this._fetch(`/card/${id}`, "DELETE")
+  deleteCard(id) {
+    return this._fetch(`/cards/${id}`, "DELETE");
   }
 
-  addLike(id){
-    return this._fetch(`/card/${id}/like`, "PUT")
+  addLike(id) {
+    return this._fetch(`/cards/${id}/likes`, "PUT");
   }
 
-  deleteLike(id){
-    return this._fetch(`/card/${id}/like`, "DELETE")
+  deleteLike(id) {
+    return this._fetch(`/cards/${id}/likes`, "DELETE");
   }
 }
