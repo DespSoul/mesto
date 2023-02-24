@@ -17,7 +17,7 @@
     <section class="profile">
       <div class="profile__info">
         <div class="profile__avatar-container">
-          <img src="" alt="аватар профиля" class="profile__avatar">
+          <img src="<%=require('./images/image.jpg')%>" alt="аватар профиля" class="profile__avatar">
         </div>
         <div>
           <div class="profile__text">
@@ -83,19 +83,19 @@
   </div>
   <div class="popup popup-delete-card">
     <div class='popup__content'>
-      <button class="popup__close" id="profile-close"></button>
+      <button class="popup__close"></button>
       <h2 class="popup__title">Вы уверены?</h2>
       <button class="popup__button popup__button-delete-element" type="submit">Да</button>
     </div>
   </div>
   <div class="popup popup-save-avatar">
     <div class='popup__content'>
-      <button class="popup__close" id="profile-close"></button>
+      <button class="popup__close"></button>
       <h2 class="popup__title">Обновить аватар</h2>
       <form class="popup__form popup__form-save-avatar" novalidate>
         <div class="popup__field">
-          <input type="url" class="popup__input" placeholder="Ссылка на картинку" name="link" id="link" required>
-          <span class="popup__span link-error"></span>
+          <input type="url" class="popup__input" placeholder="Ссылка на картинку" name="link" id="link_avatar" required>
+          <span class="popup__span link_avatar-error"></span>
         </div>
         <button class="popup__button" type="submit">Сохранить</button>
       </form>
