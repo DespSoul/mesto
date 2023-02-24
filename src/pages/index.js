@@ -1,22 +1,19 @@
-import Card from "./Card.js";
-import { initialCards } from "./data.js";
-import FormValidator from "./FormValidator.js";
-import Section from "./Section.js";
-import UserInfo from "./UserInfo.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForm from "./PopupWithForm.js";
-import Api from "./Api.js";
-import PopupDeleteCard from "./PopupDeleteCard.js";
+import Card from "../script/Card.js";
+import FormValidator from "../script/FormValidator.js";
+import Section from "../script/Section.js";
+import UserInfo from "../script/UserInfo.js";
+import PopupWithImage from "../script/PopupWithImage.js";
+import PopupWithForm from "../script/PopupWithForm.js";
+import Api from "../script/Api.js";
+import PopupDeleteCard from "../script/PopupDeleteCard.js";
 import {
   buttonEditPopupProfile,
   profileForm,
-  cards,
   buttonOpenPopupPlace,
   popupFormSaveAvatar,
   formSaveNewPlace,
-  popupDeleteCard,
   avatarProfile,
-} from "./const.js";
+} from "../script/const.js";
 import "../pages/index.css";
 
 const validationConfig = {
