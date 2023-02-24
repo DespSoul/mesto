@@ -35,10 +35,10 @@ const formValidatorPlace = new FormValidator(
   formSaveNewPlace
 );
 const formValidatorProfile = new FormValidator(validationConfig, profileForm);
-// const formValidatorAvatar = new FormValidator(
-//   validationConfig,
-//   popupFormSaveAvatar
-// );
+const formValidatorAvatar = new FormValidator(
+  validationConfig,
+  popupFormSaveAvatar
+);
 
 const userInfo = new UserInfo(
   ".profile__title",
@@ -104,7 +104,6 @@ const popupFormPlace = new PopupWithForm("#popup-place", async (data) => {
   return api
   .addNewCard(data)
   .then((data) => {
-    console.log(data.owner._id)
     section.addItem(createCard(data));
   })
   .catch((err) => {
@@ -116,7 +115,7 @@ popupFormPlace.setEventListeners();
 
 avatarProfile.addEventListener("click", () => {
   popupAvatar.open();
-  // formValidatorAvatar.resetValidation();
+  formValidatorAvatar.resetValidation();
 });
 
 const popupImageOpen = new PopupWithImage("#popup-image");
@@ -158,7 +157,6 @@ function createCard(data) {
         api
           .addLike(id)
           .then((data) => {
-            console.log(data)
             newCard.likeButtonActive(data.likes.length);
           })
           .catch((err) => {
@@ -173,7 +171,6 @@ function createCard(data) {
 
 Promise.all([api.getUsers(), api.getInitialCards()])
   .then(([usersData, cards]) => {
-    console.log(cards)
     userId = usersData._id;
     userInfo.setUserInfo(usersData);
     section.renderInitialCard(cards);
@@ -184,4 +181,4 @@ Promise.all([api.getUsers(), api.getInitialCards()])
 
 formValidatorProfile.enableValidation();
 formValidatorPlace.enableValidation();
-// formValidatorAvatar.enableValidation();
+formValidatorAvatar.enableValidation();
