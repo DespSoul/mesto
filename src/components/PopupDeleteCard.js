@@ -19,12 +19,6 @@ export default class PopupDeleteCard extends Popup {
     super.setEventListeners();
     this._buttonDeleteCard.addEventListener("click", () => {
       this._deleteCard(this._id, this._card)
-        .then(() => {
-          super.close();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
     });
   }
 }

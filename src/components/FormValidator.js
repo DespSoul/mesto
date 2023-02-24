@@ -31,18 +31,18 @@ export default class FormValidator {
 
   _toggleButtonPopup = () => {
     if (!this._hasInvalidInput()) {
-      this._activeButtonPopup()
+      this._enableSubmitButton()
     } else {
-      this._inactiveButtonPopup()
+      this._disableSubmitButton()
     }
   };
 
-  _activeButtonPopup = () => {
+  _enableSubmitButton = () => {
     this._saveButton.removeAttribute('disabled');
     this._saveButton.classList.remove(this._config.inactiveButtonClass);
   };
 
-  _inactiveButtonPopup = () => {
+  _disableSubmitButton = () => {
     this._saveButton.setAttribute('disabled', 'true');
     this._saveButton.classList.add(this._config.inactiveButtonClass);
   }

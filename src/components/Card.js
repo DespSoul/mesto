@@ -7,7 +7,7 @@ export default class Card {
     userId,
     toggleLike
   ) {
-    this._openPopupImage = handleCardClick;
+    this._handleDeleteClick = handleCardClick;
     this._templateSelector = templateSelector;
     this._toggleLike = toggleLike;
     this._popupDeleteCard = popupDeleteCard;
@@ -18,7 +18,7 @@ export default class Card {
     this._userId = userId;
   }
 
-  _templateElement() {
+  _getTemplate() {
     const cardElement = document
       .querySelector(this._templateSelector)
       .content.querySelector(".element__content")
@@ -28,7 +28,7 @@ export default class Card {
   }
 
   createElement() {
-    this._elementContent = this._templateElement();
+    this._elementContent = this._getTemplate();
     this._cardImage = this._elementContent.querySelector(".element__image");
     this._cardText = this._elementContent.querySelector(".element__title");
     this._buttonLike = this._elementContent.querySelector(".element__like");
@@ -37,7 +37,7 @@ export default class Card {
       ".element__like-quantity"
     );
 
-    this._isLiked = !!this._data.likes.find((obj) => obj._id === this.userId);
+    this._isLiked = !!this._data.likes.find((obj) => obj._id === this._userId);
 
     if (this._userId !== this._ownerId) {
       this._buttonRemove.remove();
@@ -57,24 +57,24 @@ export default class Card {
     return this._elementContent;
   }
 
-  _clickLikeButtonHandler() {
+  _handleLikeClick() {
     this._toggleLike(this._isLiked, this._data._id);
   }
 
-  likeButtonActive(count) {
+  setLikeButtonActive(count) {
     this._buttonLike.classList.add("element__like_active");
     this._counterLike.textContent = count;
     this._isLiked = true;
   }
 
-  likeButtonInactive(count) {
+  setLikeButtonInactive(count) {
     this._buttonLike.classList.remove("element__like_active");
     this._counterLike.textContent = count;
     this._isLiked = false;
   }
 
-  _clickImageHandler() {
-    this._openPopupImage(this._link, this._name);
+  _handleImageClick() {
+    this._handleDeleteClick(this._link, this._name);
   }
 
   _setEventListeners() {
@@ -83,9 +83,9 @@ export default class Card {
     });
 
     this._buttonLike.addEventListener("click", () =>
-      this._clickLikeButtonHandler()
+      this._handleLikeClick()
     );
 
-    this._cardImage.addEventListener("click", () => this._clickImageHandler());
+    this._cardImage.addEventListener("click", () => this._handleImageClick());
   }
 }

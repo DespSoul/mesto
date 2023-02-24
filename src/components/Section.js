@@ -4,8 +4,9 @@ export default class Section {
     this._section = document.querySelector(sectionSelector);
   }
 
-  renderInitialCard(data) {
-    data.forEach((item) => {
+  renderItems(data) {
+    const arrayCards = data.reverse()
+    arrayCards.forEach((item) => {
       const card = this._renderer(item);
       this.addItem(card);
     });

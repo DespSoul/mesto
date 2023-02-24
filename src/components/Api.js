@@ -17,10 +17,6 @@ export default class Api {
           return Promise.reject(`Что-то пошло не так D: ${res.status}`);
         }
       })
-      .catch((err) => {
-        console.log(err);
-      });
-
     return answer;
   }
 
@@ -32,11 +28,11 @@ export default class Api {
     return this._fetch("/cards", "GET");
   }
 
-  editingProfile({ name, about }) {
+  editProfile({ name, about }) {
     return this._fetch("/users/me", "PATCH", { name, about });
   }
 
-  editingAvatar(avatar) {
+  editAvatar(avatar) {
     return this._fetch("/users/me/avatar", "PATCH", avatar);
   }
 
