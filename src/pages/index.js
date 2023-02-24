@@ -1,11 +1,11 @@
 import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js.js";
+import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import PopupWithImage from "../components/PopupWithImage.js.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Api from "../components/Api.js";
-import PopupDeleteCard from "../components/PopupDeleteCard.js.js";
+import PopupDeleteCard from "../components/PopupDeleteCard.js";
 import {
   buttonEditPopupProfile,
   profileForm,
