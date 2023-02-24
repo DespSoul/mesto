@@ -1,11 +1,11 @@
-import Card from "../script/Card.js";
-import FormValidator from "../script/FormValidator.js";
-import Section from "../script/Section.js";
-import UserInfo from "../script/UserInfo.js";
-import PopupWithImage from "../script/PopupWithImage.js";
-import PopupWithForm from "../script/PopupWithForm.js";
-import Api from "../script/Api.js";
-import PopupDeleteCard from "../script/PopupDeleteCard.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithImage from "../components/PopupWithImage.js.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import Api from "../components/Api.js";
+import PopupDeleteCard from "../components/PopupDeleteCard.js.js";
 import {
   buttonEditPopupProfile,
   profileForm,
@@ -13,7 +13,7 @@ import {
   popupFormSaveAvatar,
   formSaveNewPlace,
   avatarProfile,
-} from "../script/const.js";
+} from "../components/const.js";
 import "../pages/index.css";
 
 const validationConfig = {
