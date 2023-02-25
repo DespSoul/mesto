@@ -17,7 +17,7 @@ export default class PopupWithForm extends Popup {
     return values;
   }
 
-  getDefaultButtonText(){
+  resetButtonText(){
     this._buttonFormSubmit.textContent = this._defaultButtonText
   }
 

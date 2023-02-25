@@ -51,13 +51,10 @@ const popupConfirmDeleteCard = new PopupDeleteCard(
       .deleteCard(id)
       .then(() => {
         card.remove();
-        card = null;
+        popupConfirmDeleteCard.close();
       })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => {
-        popupConfirmDeleteCard.close();
       });
   }
 );
@@ -69,13 +66,13 @@ const popupAvatar = new PopupWithForm(".popup-save-avatar", async (data) => {
     .editAvatar({ avatar: data.link })
     .then((data) => {
       userInfo.setUserInfo(data);
+      popupAvatar.close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      popupAvatar.getDefaultButtonText();
-      popupAvatar.close();
+      popupAvatar.resetButtonText();
     });
 });
 
@@ -86,15 +83,13 @@ const popupFormProfile = new PopupWithForm("#popup-profile", async (data) => {
     .editProfile(data)
     .then((data) => {
       userInfo.setUserInfo(data);
-      popupFormProfile.getDefaultButtonText();
       popupFormProfile.close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      popupFormProfile.getDefaultButtonText();
-      popupFormProfile.close();
+      popupFormProfile.resetButtonText();
     });
 });
 
@@ -105,13 +100,13 @@ const popupFormPlace = new PopupWithForm("#popup-place", async (data) => {
     .addNewCard(data)
     .then((data) => {
       cardsSection.addItem(createCard(data));
+      popupFormPlace.close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      popupFormPlace.getDefaultButtonText();
-      popupFormPlace.close();
+      popupFormPlace.resetButtonText();
     });
 });
 

@@ -7,10 +7,10 @@ export default class Card {
     userId,
     toggleLike
   ) {
-    this._handleDeleteClick = handleCardClick;
+    this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
     this._toggleLike = toggleLike;
-    this._popupDeleteCard = popupDeleteCard;
+    this._handleDeleteClick = popupDeleteCard;
     this._data = data;
     this._ownerId = data.owner._id;
     this._name = data.name;
@@ -74,12 +74,12 @@ export default class Card {
   }
 
   _handleImageClick() {
-    this._handleDeleteClick(this._link, this._name);
+    this._handleCardClick(this._link, this._name);
   }
 
   _setEventListeners() {
     this._buttonRemove.addEventListener("click", () => {
-      this._popupDeleteCard(this._data, this._elementContent);
+      this._handleDeleteClick(this._data, this._elementContent);
     });
 
     this._buttonLike.addEventListener("click", () =>
